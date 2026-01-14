@@ -2,7 +2,7 @@ import random
 import matplotlib.pyplot as plt
 
 # -------------------------------
-# Fake Sensor Data Generator
+#generate fake sensor data
 # -------------------------------
 def get_fake_sensor_data():
     """
@@ -14,14 +14,14 @@ def get_fake_sensor_data():
     moisture = random.uniform(0.3, 0.8)   # normalized
     return light, moisture
 
-
-# -------------------------------
 # Growth Logic
-# -------------------------------
+
+
+
 def calculate_growth_rate(light, moisture):
     growth_rate = 0.0
 
-    # Light condition
+    # condition for light
     if 40 <= light <= 70:
         growth_rate += 1.0
     elif light < 30:
@@ -29,9 +29,9 @@ def calculate_growth_rate(light, moisture):
     else:
         growth_rate -= 0.3
 
-    # Moisture condition
-    if moisture < 0.35:
-        return 0.0       # growth stops
+    # condition for moisture
+    if moisture < 0.35:   
+        return 0.0    # growth will get stopped
     elif 0.45 <= moisture <= 0.65:
         growth_rate += 1.0
     elif moisture > 0.8:
@@ -40,9 +40,9 @@ def calculate_growth_rate(light, moisture):
     return max(growth_rate, 0)
 
 
-# -------------------------------
+
 # Growth Simulation
-# -------------------------------
+
 days = 30
 plant_size = 1.0
 max_size = 100.0
@@ -64,9 +64,9 @@ for day in range(days):
         f"Plant Size={plant_size:.2f}"
     )
 
-# -------------------------------
-# Plot Result
-# -------------------------------
+
+# Plotting the Result
+
 plt.plot(range(1, days + 1), sizes)
 plt.xlabel("Days")
 plt.ylabel("Plant Size")
